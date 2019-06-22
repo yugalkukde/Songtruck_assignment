@@ -21,7 +21,7 @@ public class SingerDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_GROCERYLIST_TABLE = "CREATE TABLE " +
+        final String SQL_CREATE_SINGERLIST_TABLE = "CREATE TABLE " +
                 SingerEntry.TABLE_NAME + " (" +
                 SingerEntry.COLUMN_NAME + " TEXT PRIMARY KEY, " +
                 SingerEntry.COLUMN_ICON + " INTEGER NOT NULL, " +
@@ -29,7 +29,7 @@ public class SingerDBHelper extends SQLiteOpenHelper {
                 SingerEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                 ");";
 
-        sqLiteDatabase.execSQL(SQL_CREATE_GROCERYLIST_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_SINGERLIST_TABLE);
 
     }
 
