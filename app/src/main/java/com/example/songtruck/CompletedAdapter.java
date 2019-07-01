@@ -33,6 +33,11 @@ public class CompletedAdapter extends RecyclerView.Adapter<CompletedAdapter.Comp
         mCursor = cursor;
     }
 
+    public void swapCursor(Cursor c) {
+        mCursor = c;
+    }
+
+
     @NonNull
     @Override
     public CompletedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,7 +46,7 @@ public class CompletedAdapter extends RecyclerView.Adapter<CompletedAdapter.Comp
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CompletedViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CompletedViewHolder holder, int position) {
 
         mCursor.moveToPosition(position);
         final String name = mCursor.getString(mCursor.getColumnIndex(ItemContract.SingerEntry.COLUMN_NAME));
@@ -77,9 +82,9 @@ public class CompletedAdapter extends RecyclerView.Adapter<CompletedAdapter.Comp
                             }
                         });
                 alrt.show();
-
             }
         });
+        holder.itemView.setTag(icon);
     }
 
     @Override
