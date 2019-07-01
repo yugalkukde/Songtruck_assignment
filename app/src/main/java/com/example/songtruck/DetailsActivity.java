@@ -22,8 +22,6 @@ import static com.example.songtruck.CompletedAdapter.TEXT_PREFS;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    private static final String TAG = "DetailsActivity";
-
     private String singName;
     private int profile;
     private boolean isAvailable;
@@ -66,17 +64,14 @@ public class DetailsActivity extends AppCompatActivity {
         rating = getIntent().getDoubleExtra("ratings", 0.0);
 
         double given = sharedPreferences.getFloat(singName, 0);
-        if (Double.valueOf(given).equals(0.0)) {
+        if (Double.valueOf(given).equals(0.0))
             singerRatings.setText("Rating:" + String.valueOf(rating));
-            Log.i(TAG, "onCreate: if statement");
-        } else {
+        else {
             double original = rating;
             int total = sharedPreferences.getInt(singName + "1", 0);
             double rating1 = (((original * (total - 1)) + given) / total);
             DecimalFormat df = new DecimalFormat("#.##");
-            singerRatings.setText("Rating:"+String.valueOf(df.format(rating1)));
-            Log.i(TAG, "onCreate: else statement");
-            Log.i(TAG, "onCreate:" + given + "\n" + original + "\n" + total + "\n" + rating1);
+            singerRatings.setText("Rating:" + String.valueOf(df.format(rating1)));
         }
 
         loadUi();
